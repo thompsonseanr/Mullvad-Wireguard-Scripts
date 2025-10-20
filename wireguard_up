@@ -3,9 +3,13 @@
 sudo -s <<'EOF'
 	
 	cd /etc/wireguard/
-	mullConf=$(ls --ignore="*.zip" -1 | shuf -n 1 | cut -d "." -f 1)
-	echo ">> Will connect to Mullvad VPN: $mullConf"
-	wg-quick up "$mullConf"
-	curl https://am.i.mullvad.net/connected
+	
+    mullConf=$(ls --ignore="*.zip" -1 | shuf -n 1 | cut -d "." -f 1)
+	
+    echo ">> Will connect to Mullvad VPN: $mullConf"
+	
+    wg-quick up "$mullConf"
+	
+    curl https://am.i.mullvad.net/connected
 
 EOF
