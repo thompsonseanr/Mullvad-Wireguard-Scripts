@@ -1,0 +1,17 @@
+#!/bin/bash
+
+sudo -s <<'EOF'
+
+	cd /etc/wireguard
+
+	downConf=$(curl -s https://am.i.mullvad.net/connected | grep -Eo "(us)-(\w+)-(\w+)-([0-9]+)")
+
+	echo ">> You are connected to Mullvad VPN: $downConf"
+
+	echo ">> Proceeding to disconnect."
+
+	wg-quick down "$downConf"
+
+	curl https://am.i.mullvad.net/connected
+
+EOF
