@@ -4,7 +4,6 @@ sudo -s <<'EOF'
 
 	cd /etc/wireguard
 
-	#downConf=$(curl -s https://am.i.mullvad.net/connected | grep -Eo "(us)-(\w+)-(\w+)-([0-9]+)")
 	downConf=$(wg show | grep -Eio "(interface.+)" | sed 's/interface:\s//')
 	
 	echo "$downConf"
