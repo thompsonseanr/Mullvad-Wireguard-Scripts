@@ -11,7 +11,7 @@ sudo -s <<'EOF'
 		wg-quick up "$mullConf"
 		curl https://am.i.mullvad.net/connected
 	else
-		connConf=$( echo "$wireTest" | grep -Eioi "(interface.+)" | sed 's/interface:\s//')	
+		connConf=$( echo "$wireTest" | grep -Eio "(interface.+)" | sed 's/interface:\s//')	
 		echo ">> Hey 'all-around cool person,' you are already connected to Mullvad VPN: $connConf"
 	fi
 
